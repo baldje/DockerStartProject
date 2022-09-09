@@ -12,9 +12,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: always
     volumes:
-      - /db:/var/lib/mysql
+      - db:/var/lib/mysql
   nginx:
-    build: ./nginx
+    image: nginx:1.22.0
     volumes:
       - static:/static
     ports:
