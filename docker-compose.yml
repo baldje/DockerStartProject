@@ -13,6 +13,8 @@ services:
     restart: always
     volumes:
       - db:/var/lib/mysql
+    ports:
+      - "3306:3306"
   nginx:
     image: nginx:1.22.0
     volumes:
