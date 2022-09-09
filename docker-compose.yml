@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:5
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: always
+    volumes:
+      - /db:/var/lib/mysql
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+      - "443:443"
+
+volumes:
+  db:
